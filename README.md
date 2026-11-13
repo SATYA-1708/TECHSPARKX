@@ -5,7 +5,8 @@ A React client and Express server for a service-marketplace concept. The reposit
 ## Technology and structure
 
 - Client: React, TypeScript, Vite, React Router, and shared UI/auth components.
-- Server: Express, Mongoose, JWT/authentication dependencies, upload integration, and payment-related dependencies.
+- Server: Express/Node.js, JWT/authentication dependencies, upload and payment integrations, and `nedb-promises` for local file-backed collections.
+- The package lists Mongoose, but the active `server/models/db.js` module creates NeDB stores; this checkout does not use MongoDB for its active application persistence.
 - `client/src/` — pages, route composition, and application state.
 - `server/` — entry point, routes, models, and service setup.
 
@@ -29,7 +30,7 @@ The client defines `dev`, `build`, `lint`, and `preview` scripts; the server def
 
 ## Configuration and API
 
-Configure the database, authentication, upload, and payment integrations from server-side environment variables referenced by the source. No `.env.example` is included. Never expose payment secrets in the browser bundle. Route modules document available API behavior; no generated API schema was found.
+The current database module stores users, projects, messages, escrows, referrals, and reviews in local NeDB files under `server/data/`. Configure authentication, upload, and payment integrations from server-side environment variables referenced by the source. No `.env.example` is included. Never expose payment secrets in the browser bundle. Route modules document available API behavior; no generated API schema was found.
 
 ## Deployment and next steps
 
